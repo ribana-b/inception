@@ -1,6 +1,8 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-if [ ! -f wp_config.php ]; then
+set -x
+
+if [ ! -f wp-config.php ]; then
 	DB_NAME="$(cat /run/secrets/db_name)"
 	DB_USER_NAME="$(cat /run/secrets/db_user_name)"
 	DB_USER_PASS="$(cat /run/secrets/db_user_pass)"
@@ -15,9 +17,9 @@ if [ ! -f wp_config.php ]; then
 	chmod +x /usr/local/bin/wp
 
 	wp core download --allow-root
-	wp config create --allow-root --dbname=$DB_NAME --dbuser=$DB_USER_NAME --dbpass=$DB_USER_PASS
-	wp core install --allow-root --url=$DOMAIN_NAME --title=$WP_TITLE --admin_user=$WP_ADMIN_USER --admin_pass=$WP_ADMIN_PASS --admin_email=$WP_ADMIN_MAIL --skip-email
-	wp user create --allow-root $WP_USER $WP_EMAIL --role=author $WP_PASS
+	wp config create --allow-root --dbname="$DB_NAME" --dbuser="$DB_USER_NAME" --dbpass="$DB_USER_PASS" --dbhost=mariadb
+	wp core install --allow-root --url="$DOMAIN_NAME" --title="$WP_TITLE" --admin_user="$WP_ADMIN_USER" --admin_email="$WP_ADMIN_MAIL" --skip-email
+	wp user create --allow-root "$WP_USER" "$WP_MAIL" --role=author --user_pass="$WP_PASS"
 fi
 
 exec "$@"

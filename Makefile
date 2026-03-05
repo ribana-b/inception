@@ -11,5 +11,5 @@ fclean:
 	docker compose -f srcs/docker-compose.yml down --volumes
 
 re:
-	@make -s clean
+	@make -s fclean
 	@make -s all

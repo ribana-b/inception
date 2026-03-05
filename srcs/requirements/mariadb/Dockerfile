@@ -10,4 +10,4 @@ COPY --chmod=700 ./tools/setup.sh /root/setup.sh
 EXPOSE 3306
 
 ENTRYPOINT ["/root/setup.sh"]
-CMD ["mysqld_safe"]
+CMD ["mariadbd"]
