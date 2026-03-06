@@ -18,7 +18,7 @@ if [ ! -f wp-config.php ]; then
 
 	wp core download --allow-root
 	wp config create --allow-root --dbname="$DB_NAME" --dbuser="$DB_USER_NAME" --dbpass="$DB_USER_PASS" --dbhost=mariadb
-	wp core install --allow-root --url="$DOMAIN_NAME" --title="$WP_TITLE" --admin_user="$WP_ADMIN_USER" --admin_email="$WP_ADMIN_MAIL" --skip-email
+	wp core install --allow-root --url="$DOMAIN_NAME" --title="$WP_TITLE" --admin_user="$WP_ADMIN_USER" --admin_email="$WP_ADMIN_MAIL" --admin_password=$WP_ADMIN_PASS --skip-email
 	wp user create --allow-root "$WP_USER" "$WP_MAIL" --role=author --user_pass="$WP_PASS"
 fi
 
