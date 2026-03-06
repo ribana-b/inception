@@ -1,6 +1,0 @@
-- Configurar los secretos
-- Configurar las variables de entorno
-- Configurar el script de wordpress
-- Configurar el script de nginx
-- Configurar el script de mariadb
-- Rellenar los .md
