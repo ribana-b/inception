@@ -47,7 +47,6 @@ services:
     depends_on:
       - wordpress
     ports:
-      - "80:80"
       - "443:443"
     networks:
       - inception
@@ -57,7 +56,17 @@ services:
 
 volumes:
   wp_data:
+    driver: local
+    driver_opts:
+      type: none
+      bind: o
+      device: /home/ribana-b/data
   wp_files:
+    driver: local
+    driver_opts:
+      type: none
+      bind: o
+      device: /home/ribana-b/data
 
 networks:
   inception:
