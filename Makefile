@@ -9,7 +9,7 @@ clean:
 
 fclean:
 	docker compose -f srcs/docker-compose.yml down --volumes
-	rm -rf /home/ribana-b/data
+	sudo rm -rf /home/ribana-b/data
 
 re:
 	@make -s fclean
