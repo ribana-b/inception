@@ -59,13 +59,13 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      bind: o
+      o: bind
       device: /home/ribana-b/data
   wp_files:
     driver: local
     driver_opts:
       type: none
-      bind: o
+      o: bind
       device: /home/ribana-b/data
 
 networks:
